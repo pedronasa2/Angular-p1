@@ -1,0 +1,51 @@
+<app-container>
+
+
+  <app-cabecalho nomeImagem="banner.png">
+  </app-cabecalho>
+
+  <div class="adcionar">
+    <dx-button [width]="200" [height]="50" text="adcionar" icon="plus.png" type="default" stylingMode="outlined" [routerLink]="['/agenda/formulario']">
+    </dx-button>
+  </div>
+  <dx-text-box
+    mode="search"
+    placeholder="Digite para buscar"
+    [(value)]="textoBusca"
+    valueChangeEvent="keyup"
+    (onValueChanged)="mostrarNoCossole(textoBusca)">
+  </dx-text-box>
+
+  <dx-list
+    [dataSource]="contatos"
+    displayExpr="nome"
+    searchMode="contains"
+    searchExpr="nome"
+    [searchValue]="textoBusca"
+    pageLoadMode="scrollBottom"
+    >
+    <div *dxTemplate="let contato of 'item'" [routerLink]="['/agenda/perfil', contato.id]">
+      <div class="contato">
+
+        <div class="nome-contato">
+          <strong>{{contato.nome}}</strong>
+        </div>
+
+        <div>
+          <p>{{contato.telefone}}</p>
+        </div>
+
+        <div class="botoes">
+          <button (click)=" editarContato(contato.id, $event) " class="botao-editar" >
+            <img src="/pencil-square.png">
+          </button>
+          <button (click)="excluir(contato.id); $event.stopPropagation()"  class="botao-excluir">
+            <img src="/trash.png">
+          </button>
+        </div>
+      </div>
+    </div>
+  </dx-list>
+
+
+</app-container>

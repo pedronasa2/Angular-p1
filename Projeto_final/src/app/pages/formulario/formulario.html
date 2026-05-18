@@ -1,0 +1,57 @@
+
+
+<app-container>
+  <dx-button
+    stylingMode="contained"
+    text="Voltar"
+    type="normal"
+    icon="arrowleft"
+    [width]="120"
+    routerLink = "/agenda"
+  >
+  </dx-button>
+
+  <app-cabecalho nomeImagem="perfil-contato.png">
+
+  </app-cabecalho>
+
+
+  <dx-form [formData]="this.contato" >
+
+    <dxi-item dataField="nome">
+      <dxi-validation-rule type="required" message="Obrigatorio mano">
+
+      </dxi-validation-rule>
+    </dxi-item>
+    <dxi-item dataField="telefone">
+      <dxi-validation-rule type="required" message="Obrigatorio mano">
+
+      </dxi-validation-rule>
+    </dxi-item>
+    <dxi-item dataField="email" >
+
+    </dxi-item>
+    <dxi-item dataField="aniversario" editorType="dxCalendar">
+
+    </dxi-item>
+    <dxi-item dataField="redes">
+
+    </dxi-item>
+    <dxi-item dataField="observacoes" editorType="dxTextArea">
+
+    </dxi-item>
+    <dxi-item
+      itemType="button"
+
+      [buttonOptions]="{
+      text: 'Salvar Contato',
+      type: 'default',
+      icon: 'save',
+      useSubmitBehavior: true,
+      onClick: salvarNoBanco
+    }">
+
+    </dxi-item>
+
+  </dx-form>
+</app-container>

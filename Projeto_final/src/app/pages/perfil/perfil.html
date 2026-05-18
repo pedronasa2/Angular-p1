@@ -1,0 +1,58 @@
+
+
+<app-container>
+  <dx-button
+    stylingMode="contained"
+    text="Voltar"
+    type="normal"
+    icon="arrowleft"
+    [width]="120"
+    routerLink = "/agenda"
+  >
+  </dx-button>
+
+  <app-cabecalho nomeImagem="perfil-contato.png">
+
+  </app-cabecalho>
+  <div class="form">
+    <div class="dx-fieldset">
+      <div class="dx-fieldset-header">Dados do contato</div>
+      <div class="dx-field">
+        <div class="dx-field-label">Nome do contato:</div>
+        <div class="dx-field-value-static">{{contato.nome}}</div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Telefone:</div>
+        <div class="dx-field-value-static">{{contato.telefone}}</div>
+      </div>
+    </div>
+    <div class="dx-fieldset">
+      <div class="dx-field">
+        <div class="dx-field-label">Email:</div>
+        <div class="dx-field-value-static" style="">{{contato.email}}</div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Data aniversario:</div>
+        <div class="dx-field-value-static" style="">{{dataDiaAno(contato?.aniversario)}}</div>
+      </div>
+      <div class="dx-field">
+        <div class="dx-field-label">Redes sociais</div>
+        <div class="dx-field-value-static" style="">{{contato.redes}}</div>
+      </div>
+    </div>
+    <div class="dx-fieldset" id="notes-container">
+      <div class="dx-field">
+        <div class="dx-field-label">Observações</div>
+        <dx-text-area
+          class="dx-field-value"
+          [height]="80"
+          value="{{this.contato.observacoes}}"
+          [inputAttr]="{ 'aria-label': 'Notes' }"
+          [disabled]="true"
+        >
+        </dx-text-area>
+      </div>
+    </div>
+  </div>
+
+</app-container>
