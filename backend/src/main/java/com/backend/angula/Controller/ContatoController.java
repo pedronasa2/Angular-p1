@@ -1,12 +1,11 @@
-package com.backend.angula.Controllers;
+package com.backend.angula.Controller;
 
-import com.backend.angula.Contato.ContatoService;
-import com.backend.angula.Contato.DadosContato;
+import com.backend.angula.Service.ContatoService;
+import com.backend.angula.Repository.DadosContato;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 @Transactional
 @RestController

@@ -1,5 +1,8 @@
-package com.backend.angula.Contato;
+package com.backend.angula.Service;
 
+import com.backend.angula.model.Contato;
+import com.backend.angula.Repository.ContatoRepository;
+import com.backend.angula.Repository.DadosContato;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,6 @@
-package com.backend.angula.Contato;
+package com.backend.angula.Repository;
 
+import com.backend.angula.model.Contato;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

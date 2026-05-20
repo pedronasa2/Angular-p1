@@ -1,15 +1,13 @@
-package com.backend.angula.Contato;
+package com.backend.angula.model;
 
+import com.backend.angula.Repository.DadosContato;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
-import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.jmx.export.naming.IdentityNamingStrategy;
-import org.springframework.stereotype.Component;
 
 @Entity
 @NoArgsConstructor

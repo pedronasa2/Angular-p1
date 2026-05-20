@@ -1,4 +1,6 @@
-package com.backend.angula.Contato;
+package com.backend.angula.Repository;
+
+import com.backend.angula.model.Contato;
 
 public record DadosContato(Long id,
                            String nome,
