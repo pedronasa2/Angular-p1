@@ -1,0 +1,23 @@
+::ng-deep .left {
+  float: left;
+  width: 230px;
+  height: 100%;
+  padding: 20px;
+  background: rgba(191, 191, 191, 0.15);
+  margin-right: 30px;
+}
+.regiao{
+  background-color: rgba(12, 120, 227, 0.38);
+  width: 80%;
+  border-radius: 10px;
+  text-align:  center;
+}
+
+::ng-deep .right {
+  overflow: hidden;
+  width: 230px;
+  height: 100%;
+}
+.painel{
+  text-align: center;
+}

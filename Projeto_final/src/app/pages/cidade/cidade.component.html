@@ -1,0 +1,55 @@
+
+<div style="height: 600px">
+<div class="left">
+<dx-list
+  style="height: 95% "
+  [dataSource]="dataSourceEstado"
+  [grouped]="true"
+  groupTemplate="group"
+  itemTemplate="item"
+  >
+  <div *dxTemplate="let estado of 'item'"  (click)="estadoSelecionado=estado; listarCidades(estado.sigla);" > <!--[routerLink]="['/agenda/perfil', contato.id]"-->
+    <div >
+
+      <div >
+        <strong>{{estado.nome}}</strong>
+      </div>
+
+    </div>
+  </div>
+  <div *dxTemplate="let regiao of 'group'" class="regiao">
+    <p>{{regiao.key}}</p>
+  </div>
+</dx-list>
+</div>
+
+<div class="left">
+  <div class=" right">
+  <dx-list
+    style="height: 100% "
+    [dataSource]="dataSourceCidade"
+    [grouped]="true"
+    groupTemplate="group"
+    itemTemplate="item"
+  >
+    <div *dxTemplate="let cidade of 'item'"  (click)="cidadeSelecionada=cidade; console.log(cidadeSelecionada)" > <!--[routerLink]="['/agenda/perfil', contato.id]"-->
+        <div >
+          <strong>{{cidade?.nome}}</strong>
+        </div>
+    </div>
+    <div *dxTemplate="let regiao of 'group'" class="regiao">
+      <p>{{regiao.key}}</p>
+    </div>
+  </dx-list>
+
+</div>
+
+</div>
+  <div class="painel">
+  <h1>{{ cidadeSelecionada?.nome }}</h1>
+  <h3>{{ estadoSelecionado?.nome }} ({{ estadoSelecionado?.sigla }})</h3>
+  <p><strong>Região do País:</strong> {{ estadoSelecionado?.regiao.nome }}</p>
+
+  <p><strong>Região Administrativa Imediata:</strong> {{ cidadeSelecionada['regiao-imediata']?.nome }}</p>
+</div>
+</div>

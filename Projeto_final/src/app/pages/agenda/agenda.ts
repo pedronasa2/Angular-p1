@@ -1,13 +1,14 @@
 import { Component, OnInit} from '@angular/core';
-import {Cabecalho} from './cabecalho/cabecalho';
-import {Container} from './container/container';
+import {CabecalhoComponent} from '../../shared/components/cabecalho/cabecalho.component';
+import {ContainerComponent} from '../../shared/components/container/container.component';
 import {DxButtonComponent, DxListComponent, DxTextBoxComponent, DxTextBoxModule} from 'devextreme-angular';
 import { HttpClient } from '@angular/common/http';
 import DataSource from 'devextreme/data/data_source';
 import {routes} from '../../app.routes';
 import {Router, RouterLink} from '@angular/router';
-import {Service} from './service/service';
+import {AgendaService} from '../../shared/services/agenda.service';
 import DevExpress from 'devextreme';
+import {ArrayStore} from 'devextreme/common/data';
 
 
 
@@ -24,7 +25,7 @@ export interface Contato {
 
 @Component({
   selector: 'app-agenda',
-  imports: [Cabecalho, Container, DxTextBoxModule, DxListComponent, DxButtonComponent, RouterLink],
+  imports: [CabecalhoComponent, ContainerComponent, DxTextBoxModule, DxListComponent, DxButtonComponent, RouterLink],
   templateUrl: './agenda.html',
   styleUrl: './agenda.scss',
 })
@@ -37,11 +38,21 @@ export class Agenda {
   listaPreparada: any;
 
 
-  constructor(private http:HttpClient, private service:Service, private router:Router) {
+  constructor(private http:HttpClient, private service:AgendaService, private router:Router) {
   }
 
   ngOnInit() {
     this.listaTodosContatos();
+
+  }
+
+  mostraLista(){
+    console.log(this.contatos)
+    console.log(this.listaPreparada);
+    console.log(new ArrayStore({
+      data: this.contatos,
+      key: 'Id',
+    }));
   }
 
   mostrarNoCossole(elemento :any){
@@ -49,13 +60,23 @@ export class Agenda {
   }
 
   listaTodosContatos(){
-    this.service.pegarLista().subscribe(dados => this.contatos = dados.sort((a, b) => a.nome.localeCompare(b.nome)));
+    this.service.pegarLista().subscribe({
+      next: dados => {
+        this.contatos = dados.sort((a, b) => a.nome.localeCompare(b.nome));
 
-    this.listaPreparada = new DataSource({ // serve para fazer agrupamento
-      store: this.contatos,
-      sort: 'nome',
-      group: (contato: any) => contato.nome.charAt(0).toUpperCase()
+        this.listaPreparada = new DataSource({ // serve para fazer agrupamento
+          store: this.contatos,
+          sort: 'nome',
+          group: function(e){
+            console.log(e.nome[0])
+            return e.nome[0];
+          }
+        });
+      }
     });
+
+
+
 
     this.mostrarNoCossole(this.contatos);
   }

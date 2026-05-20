@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import {Container} from '../agenda/container/container';
+import {ContainerComponent} from '../../shared/components/container/container.component';
 import {DxButtonComponent, DxTextAreaComponent, DxTextBoxComponent} from 'devextreme-angular';
 import {Contato} from '../agenda/agenda';
-import {Service} from '../agenda/service/service';
+import {AgendaService} from '../../shared/services/agenda.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {Cabecalho} from '../agenda/cabecalho/cabecalho';
+import {CabecalhoComponent} from '../../shared/components/cabecalho/cabecalho.component';
 
 @Component({
   selector: 'app-perfil',
   imports: [
-    Container,
+    ContainerComponent,
     DxTextAreaComponent,
     DxTextBoxComponent,
-    Cabecalho,
+    CabecalhoComponent,
     DxButtonComponent,
     RouterLink
   ],
@@ -32,7 +32,7 @@ export class Perfil {
 
   id: String|null = null
 
-  constructor(private service:Service, private router:Router, private route:ActivatedRoute) {
+  constructor(private service:AgendaService, private router:Router, private route:ActivatedRoute) {
   }
   ngOnInit(){
     this.id = this.route.snapshot.paramMap.get('id');

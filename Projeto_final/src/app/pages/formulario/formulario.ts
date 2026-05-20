@@ -5,11 +5,11 @@ import {DxiItemComponent, DxiValidationRuleComponent} from 'devextreme-angular/u
 
 import DevExpress from 'devextreme';
 import ClickEvent = DevExpress.ui.dxButton.ClickEvent;
-import {Service} from '../agenda/service/service';
+import {AgendaService} from '../../shared/services/agenda.service';
 import {Agenda, Contato} from '../agenda/agenda';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
-import {Cabecalho} from '../agenda/cabecalho/cabecalho';
-import {Container} from '../agenda/container/container';
+import {CabecalhoComponent} from '../../shared/components/cabecalho/cabecalho.component';
+import {ContainerComponent} from '../../shared/components/container/container.component';
 
 @Component({
   selector: 'app-formulario',
@@ -19,15 +19,15 @@ import {Container} from '../agenda/container/container';
     DxiValidationRuleComponent,
     DxButtonComponent,
     RouterLink,
-    Cabecalho,
-    Container
+    CabecalhoComponent,
+    ContainerComponent
   ],
   templateUrl: './formulario.html',
   styleUrl: './formulario.scss',
 })
 export class Formulario {
 
-  constructor(private service:Service, private router:Router, private route:ActivatedRoute) {
+  constructor(private service:AgendaService, private router:Router, private route:ActivatedRoute) {
   }
   private id: String | null = null;
 

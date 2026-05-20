@@ -15,15 +15,15 @@
     valueChangeEvent="keyup"
     (onValueChanged)="mostrarNoCossole(textoBusca)">
   </dx-text-box>
+  <dx-button (onClick)="mostraLista()"></dx-button>
+
+
 
   <dx-list
-    [dataSource]="contatos"
-    displayExpr="nome"
-    searchMode="contains"
-    searchExpr="nome"
-    [searchValue]="textoBusca"
-    pageLoadMode="scrollBottom"
-    >
+    [dataSource]="listaPreparada"
+    [grouped]="true"
+    groupTemplate="group"
+    itemTemplate="item">
     <div *dxTemplate="let contato of 'item'" [routerLink]="['/agenda/perfil', contato.id]">
       <div class="contato">
 
@@ -45,7 +45,42 @@
         </div>
       </div>
     </div>
+    <div *dxTemplate="let groupObj of 'group'">
+      <p>{{groupObj.key}}</p>
+    </div>
   </dx-list>
+<!--  <dx-list
+    [dataSource]="listaPreparada"
+    [grouped]="true"
+    displayExpr="nome"
+    searchMode="contains"
+    searchExpr="nome"
+    [selectedItemKeys]="[contatos[0].id]"
+    [searchValue]="textoBusca"
+    pageLoadMode="scrollBottom"
+    >
 
+    <div *dxTemplate="let contato of 'item'" [routerLink]="['/agenda/perfil', contato.id]">
+      <div class="contato">
+
+        <div class="nome-contato">
+          <strong>{{contato.nome}}</strong>
+        </div>
+
+        <div>
+          <p>{{contato.telefone}}</p>
+        </div>
+
+        <div class="botoes">
+          <button (click)=" editarContato(contato.id, $event) " class="botao-editar" >
+            <img src="/pencil-square.png">
+          </button>
+          <button (click)="excluir(contato.id); $event.stopPropagation()"  class="botao-excluir">
+            <img src="/trash.png">
+          </button>
+        </div>
+      </div>
+    </div>
+  </dx-list> -->
 
 </app-container>

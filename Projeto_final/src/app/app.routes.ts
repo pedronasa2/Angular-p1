@@ -12,6 +12,7 @@ import { TasksComponent } from './pages/tasks/tasks.component';
 import { Agenda } from './pages/agenda/agenda';
 import {Formulario} from './pages/formulario/formulario';
 import { Perfil } from './pages/perfil/perfil';
+import {CidadeComponent} from './pages/cidade/cidade.component';
 
 
 export const routes: Routes = [
@@ -45,6 +46,11 @@ export const routes: Routes = [
   {
     path: 'agenda/formulario',
     component: Formulario,
+
+  },
+  {
+    path: 'cidades',
+    component: CidadeComponent,
 
   },
   {

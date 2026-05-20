@@ -1,0 +1,16 @@
+import {Component, Input} from '@angular/core';
+import {DxButtonComponent} from 'devextreme-angular';
+import {RouterLink} from '@angular/router';
+
+@Component({
+  selector: 'app-cabecalho',
+  imports: [
+    DxButtonComponent,
+    RouterLink
+  ],
+  templateUrl: './cabecalho.component.html',
+  styleUrl: './cabecalho.component.scss',
+})
+export class CabecalhoComponent {
+  @Input() nomeImagem: string = '';
+}

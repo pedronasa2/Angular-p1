@@ -8,7 +8,12 @@ export const navigation: NavigationItem[] = [
   {
     text: 'Agenda',
     path: '/agenda',
-    icon: 'home',
+    icon: 'cell.svg',
+  },
+  {
+    text: 'Cidades',
+    path: '/cidades',
+    icon: 'city.svg',
   },
   {
     text: 'Examples',
