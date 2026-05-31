@@ -1,0 +1,52 @@
+<header>
+  <h1>Bem-vindo a loja</h1>
+
+  <div class="dados">
+    <div class="cartao">
+      <img src="cliente.svg">
+      <div class="informacoes">
+        <p>Total de Cliente</p>
+        <h3>{{this.listaClientes.length}}</h3>
+      </div>
+    </div>
+    <div class="cartao">
+      <img src="produto.svg">
+      <div class="informacoes">
+        <p>Total de Produtos</p>
+        <h3>{{this.listaProdutos.length}}</h3>
+      </div>
+    </div>
+    <div class="cartao">
+      <img src="notas.svg">
+      <div class="informacoes">
+        <p>Total de Notas ficais</p>
+        <h3>{{this.listaNotas.length}}</h3>
+      </div>
+    </div>
+  </div>
+
+</header>
+<body>
+<h1>
+  Opções
+</h1>
+<div class="botoes">
+  <dx-button
+  text="Criar Cliente"
+  icon="cliente.svg"
+  type="default"
+  routerLink="/inicioloja/clientes"
+  width="30%"
+  height="100"
+  ></dx-button>
+  <dx-button
+  text="Criar Produto"
+  icon="produto.svg"
+  type="default"
+  routerLink="/inicioloja/produto"
+  width="30%"
+  height="100"
+  ></dx-button>
+</div>
+</body>
+

@@ -1,0 +1,49 @@
+<div class="form">
+  <div class="dx-fieldset">
+    <div class="dx-fieldset-header">Dados do Cliente</div>
+    <div class="dx-field">
+      <div class="dx-field-label">Nome:</div>
+      <div class="dx-field-value-static">{{cliente.nome}}</div>
+    </div>
+    <div class="dx-field">
+      <div class="dx-field-label">Codigo do cliente:</div>
+      <div class="dx-field-value-static">{{cliente.codigo}}</div>
+    </div>
+  </div>
+</div>
+
+<dx-data-grid
+  #grid
+  id="grid-container"
+  [dataSource]="listaDeProdutos"
+  keyExpr="id"
+  [(selectedRowKeys)]="linhasSelecionadas"
+  (onSelectionChanged)="calcularValorTotal()"
+  [showBorders]="true"
+
+>
+  <dxo-data-grid-selection mode="multiple"> </dxo-data-grid-selection>
+  <dxi-data-grid-column dataField="nome"></dxi-data-grid-column>
+  <dxi-data-grid-column dataField="descricao"></dxi-data-grid-column>
+  <dxi-data-grid-column dataField="valorUnitario"
+                        caption="Preço"
+                        format="R$ #,##0.00">></dxi-data-grid-column>
+
+
+</dx-data-grid>
+<div class="roda-pe">
+  <div>
+    <span class="caption"><strong>Total da compra: </strong> </span>
+    <span>
+    R$ {{ valorTota.toFixed(2) }}
+  </span>
+  </div>
+  <dx-button
+    text="Confirmar compra"
+    type="success"
+    icon="save"
+    [width]="300"
+    (onClick)="criarNota()"
+  >
+  </dx-button>
+</div>

@@ -1,0 +1,58 @@
+.principal{
+  display: flex;
+}
+
+.container{
+  background-color: #fafafa;
+  margin: 40px auto;
+  padding: 30px 40px;
+  border-radius: 20px;
+  width: 90%;
+}
+
+.item{
+  justify-content: space-between;
+  display: flex;
+}
+
+.nome{
+  font-size: 15px;
+  margin: auto 0;
+  overflow: hidden;
+  width: 180px;
+}
+
+.preco{
+  margin: auto;
+  margin-left: 15px;
+  width: 70px;
+  overflow: hidden;
+}
+
+.botoes-esquerda{
+  justify-content: space-between;
+  display: flex;
+  width:400px;
+  margin-bottom: 10px;
+}
+
+
+h1{
+  text-align: center;
+}
+
+h2{
+  text-align: right;
+  color: #0c78e3;
+}
+
+h3{
+  font-size: 15px;
+}
+.descricao{
+  width: 80%;
+  background-color: rgba(115, 159, 213, 0.71);
+  padding: 10px 10px;
+  border-radius: 20px;
+  margin: 0 auto;
+}

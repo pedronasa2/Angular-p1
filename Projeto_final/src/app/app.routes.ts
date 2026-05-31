@@ -13,6 +13,10 @@ import { Agenda } from './pages/agenda/agenda';
 import {Formulario} from './pages/formulario/formulario';
 import { Perfil } from './pages/perfil/perfil';
 import {CidadeComponent} from './pages/cidade/cidade.component';
+import {NotaComponent} from './pages/nota/nota.component';
+import {ClienteComponent} from './pages/cliente/cliente.component';
+import {ProdutoComponent} from './pages/produto/produto.component';
+import {InicioLojaComponent} from './pages/inicio.loja/inicio.loja.component';
 
 
 export const routes: Routes = [
@@ -56,6 +60,26 @@ export const routes: Routes = [
   {
     path: 'agenda/formulario/:id',
     component: Formulario,
+
+  },
+  {
+    path: 'inicioloja',
+    component: InicioLojaComponent,
+
+  },
+  {
+    path: 'inicioloja/clientes',
+    component: ClienteComponent,
+
+  },
+  {
+    path: 'inicioloja/produto',
+    component: ProdutoComponent,
+
+  },
+  {
+    path: 'inicioloja/nota/:id',
+    component: NotaComponent,
 
   },
   {

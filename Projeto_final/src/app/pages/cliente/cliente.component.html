@@ -1,0 +1,130 @@
+
+<div class="principal">
+
+<div class="esquerda">
+  <div class="botoes-esquerda">
+    <dx-button
+      text="Voltar"
+      type="default"
+      icon="back"
+      [width]="145"
+      routerLink="/inicioloja"
+    >
+    </dx-button>
+    <dx-button
+      stylingMode="outlined"
+      text="Adicionar"
+      type="default"
+      icon="add"
+      [width]="145"
+      (onClick)="adcionarCliente();"
+    ></dx-button>
+
+  </div>
+  <dx-list
+    [dataSource]="listaDeClientes"
+    [searchEnabled]="true"
+    [searchExpr]="['nome', 'codigo']"
+    selectionMode="single"
+    itemTemplate="item"
+    width=300px
+  >
+
+    <div *dxTemplate="let item of 'item'" (click)="selecionarCliente(item)">
+      <div class="item">
+        <div class="nome">{{ item.nome }}</div>
+        <div class="botoes">
+          <dx-button icon="edit" (onClick)="modoEdicao=true" type="normal" stylingMode="text"></dx-button>
+          <dx-button icon="clearformat" (onClick)="deletarCliente(item)" type="normal" stylingMode="text"></dx-button>
+        </div>
+      </div>
+    </div>
+  </dx-list>
+</div>
+  <div class="direita">
+  @if (clienteAtual){
+
+    @if (!modoEdicao){
+
+      <p><strong>Nome do cliente: </strong> {{clienteAtual.nome}}</p>
+
+      <p><strong>Codigo do cliente: </strong> {{clienteAtual.codigo}} </p>
+
+      <dx-button
+        stylingMode="outlined"
+        text="Nova nota"
+        type="default"
+        icon="add"
+        [width]="145"
+        [routerLink]="['/inicioloja/nota', clienteAtual.id ]"
+      ></dx-button>
+
+      @if (clienteAtual.nota && clienteAtual.nota.length > 0) {
+        <div class="notas">
+          @for (nota of clienteAtual.nota; track nota.id){
+            <div class="nota">
+            <p><strong>Data de emissão: </strong>{{  nota.data.substring(0,10)}} </p>
+            <p><strong>Id da nota: </strong>{{  nota.id}} </p>
+
+            @if (nota.listaItens.length > 0) {
+              @for (itemNota of nota.listaItens; track itemNota.id){
+                <div class="produto">
+                  <p class="produto-nome">{{itemNota.nome}}</p>
+                  <p>R$ {{itemNota.valorUnitario.toFixed(2)}}</p>
+                </div>
+              }
+
+              <div class="valor"><p>Valor total: </p> <p>R$ {{nota.valorTotal.toFixed(2)}}</p></div>
+            }
+
+            </div>
+          }
+        </div>
+
+      }
+
+    } @else {
+      <form (submit)="editarOuAdcionarCliente($event)">
+        <dx-form
+          id="form"
+          [formData]="clienteAtual"
+          [showValidationSummary]="true"
+          validationGroup="customerData"
+        >
+
+          <dxi-form-item  dataField="nome" [isRequired]="true">
+            <dxi-form-validation-rule type="required" message="Nome é obrigatorio">
+            </dxi-form-validation-rule>
+          </dxi-form-item>
+
+          <dxi-form-item  dataField="codigo" [isRequired]="true">
+            <dxi-form-validation-rule type="required" message="codigo é obrigatorio">
+            </dxi-form-validation-rule>
+          </dxi-form-item>
+
+
+        </dx-form>
+        <dx-button
+          stylingMode="outlined"
+          text="Cancelar"
+          type="danger"
+          [width]="120"
+          (onClick)="modoEdicao=false"
+        >
+        </dx-button>
+        <dx-button
+          stylingMode="outlined"
+          text="Salvar"
+          type="success"
+          [width]="120"
+          [useSubmitBehavior]="true"
+
+        >
+        </dx-button>
+      </form>
+    }
+
+
+  }
+  </div>
+</div>

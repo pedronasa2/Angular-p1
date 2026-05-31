@@ -1,0 +1,128 @@
+  <div class="principal">
+    <div>
+    <div class="botoes-esquerda">
+      <dx-button
+        text="Voltar"
+        type="default"
+        icon="back"
+        [width]="145"
+        routerLink="/inicioloja"
+      >
+      </dx-button>
+      <dx-button
+        stylingMode="outlined"
+        text="Adicionar"
+        type="default"
+        icon="add"
+        [width]="145"
+        (onClick)="adcionarProduto()"
+      ></dx-button>
+
+    </div>
+    <dx-list
+      [dataSource]="listaDeProdutos"
+      [searchEnabled]="true"
+      searchExpr="nome"
+      selectionMode="single"
+      itemTemplate="item"
+      width="400px"
+
+    >
+      <div *dxTemplate="let item of 'item'" (click)="produtoAtual = item; novoProduto = false; modoEdicao = false">
+        <div class="item">
+          <div class="nome">{{ item.nome }}</div>
+          <div class="preco">R$ {{item.valorUnitario.toFixed(2)}}</div>
+          <div class="botoes">
+            <dx-button icon="clearformat" (onClick)="deletarProduto(item)" type="normal" stylingMode="text"></dx-button>
+          </div>
+
+        </div>
+      </div>
+    </dx-list>
+    </div>
+    <div class="container">
+      @if (modoEdicao) {
+
+        <form (submit)="editarProduto($event)">
+          @if (novoProduto){
+            <h1>Novo produto</h1>
+          } @else {
+            <h1>
+              Editar produto
+            </h1>
+          }
+          <dx-form
+            id="form"
+            [formData]="produtoAtual"
+            [showValidationSummary]="true"
+            validationGroup="customerData"
+          >
+
+            <dxi-form-item  dataField="nome" [isRequired]="true">
+              <dxi-form-validation-rule type="required" message="Nome é obrigatorio">
+              </dxi-form-validation-rule>
+            </dxi-form-item>
+
+            <dxi-form-item  dataField="valorUnitario" [isRequired]="true">
+              <dxi-form-validation-rule type="required" message="Valor é obrigatorio">
+              </dxi-form-validation-rule>
+            </dxi-form-item>
+            @if (novoProduto){
+              <dxi-form-item  dataField="codigo" [isRequired]="true">
+                <dxi-form-validation-rule type="required" message="Codigo é obrigatorio">
+                </dxi-form-validation-rule>
+              </dxi-form-item>
+            }
+
+            <dxi-form-item  dataField="descricao" [isRequired]="true" editorType="dxTextArea">
+            </dxi-form-item>
+
+
+          </dx-form>
+          <dx-button
+            stylingMode="outlined"
+            text="Cancelar"
+            type="danger"
+            [width]="120"
+            (onClick)="modoEdicao=false"
+          >
+          </dx-button>
+          <dx-button
+            stylingMode="outlined"
+            text="Salvar"
+            type="success"
+            [width]="120"
+            [useSubmitBehavior]="true"
+          >
+          </dx-button>
+        </form>
+      } @else {
+        <div class="info-produto">
+          <h1>
+            {{produtoAtual.nome}}
+          </h1>
+          <h2>
+            R$ {{produtoAtual.valorUnitario.toFixed(2)}}
+          </h2>
+          <h3>
+            Descrição do produto:
+          </h3>
+          <p class="descricao">
+            {{produtoAtual.descricao}}
+          </p>
+          <p>
+            Codigo do produto: {{produtoAtual.codigo}}
+          </p>
+          <dx-button
+            stylingMode="outlined"
+            text="Editar"
+            type="default"
+            [width]="120"
+            (onClick)="modoEdicao=true"
+
+          ></dx-button>
+        </div>
+      }
+    </div>
+
+  </div>

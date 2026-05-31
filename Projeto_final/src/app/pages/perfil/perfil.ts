@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {ContainerComponent} from '../../shared/components/container/container.component';
-import {DxButtonComponent, DxTextAreaComponent, DxTextBoxComponent} from 'devextreme-angular';
+import {DxButtonComponent, DxTextAreaComponent} from 'devextreme-angular';
 import {Contato} from '../agenda/agenda';
 import {AgendaService} from '../../shared/services/agenda.service';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
@@ -11,7 +11,6 @@ import {CabecalhoComponent} from '../../shared/components/cabecalho/cabecalho.co
   imports: [
     ContainerComponent,
     DxTextAreaComponent,
-    DxTextBoxComponent,
     CabecalhoComponent,
     DxButtonComponent,
     RouterLink

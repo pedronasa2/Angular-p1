@@ -1,0 +1,49 @@
+
+header{
+  padding: 20px 30px 30px 30px;
+  border-radius: 10px;
+}
+.dados{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  width: 100%;
+}
+.cartao{
+  width: 300px;
+  height: 70px;
+  display: flex;
+  background-color: #dadaff;
+  border-radius: 10px;
+
+
+}
+img{
+  width: 70px;
+  height: 70px;
+  margin-left: 20px;
+}
+.cartao .informacoes{
+  text-align: center;
+  margin: 0 0 0 20%;
+}
+.cartao .informacoes p{
+  margin: 0;
+  padding: 0;
+
+}
+.cartao .informacoes h3{
+  margin: 0;
+  padding: 0;
+
+}
+h1{
+  text-align: center;
+}
+
+.botoes{
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: 20px auto;
+}

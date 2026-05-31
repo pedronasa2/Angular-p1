@@ -16,17 +16,26 @@ export const navigation: NavigationItem[] = [
     icon: 'city.svg',
   },
   {
-    text: 'Examples',
-    icon: 'folder',
+    text: 'Loja',
+    icon: 'cart',
+
     items: [
       {
-        text: 'Profile',
-        path: '/profile',
+        text: 'Inicio',
+        path: '/inicioloja',
+        icon: "cart"
       },
       {
-        text: 'Tasks',
-        path: '/tasks',
+        text: 'Cliente',
+        path: '/inicioloja/clientes',
+        icon: "cliente.svg"
+      },
+      {
+        text: 'Produto',
+        path: '/inicioloja/produto',
+        icon: 'produto.svg'
       },
     ],
   },
+
 ];
