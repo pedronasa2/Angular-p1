@@ -1,0 +1,81 @@
+<dx-button
+  text="voltar"
+  type="default"
+  icon="back"
+  [width]="150"
+  routerLink="/inicioloja"
+>
+</dx-button>
+<div class="pricipal">
+
+  <h1>Lista de nota fiscais</h1>
+  <dx-button
+    text="Adicionar nota"
+    type="default"
+    icon="plus"
+    routerLink="/inicioloja/nota/adcionar">
+  </dx-button>
+
+  <dx-data-grid
+    [dataSource]="listaDeNotas"
+    keyExpr="id"
+    [showBorders]="true"
+    (onRowRemoved)="onRowRemoved($event)"
+    >
+
+
+    <dxo-data-grid-header-filter
+      [visible]="true"
+    ></dxo-data-grid-header-filter>
+    <dxo-data-grid-search-panel
+      [visible]="true"
+      [width]="240"
+      placeholder="Search..."
+    ></dxo-data-grid-search-panel>
+
+
+    <dxo-data-grid-editing
+      mode="popup"
+      [allowDeleting]="true"
+
+      >
+
+      <dxo-data-grid-popup title="Criar Nota Fiscal" [width]="700" [height]="600"></dxo-data-grid-popup>
+
+      <dxo-data-grid-form>
+        <dxi-data-grid-item
+          dataField="Cliente"
+          editorType="dxSelectBox"
+          [colSpan]="2"
+          [editorOptions]="{
+          dataSource: listaDeClientes,
+          valueExpr: 'id',
+          displayExpr: 'nome',
+          searchEnabled: true }"
+        >
+          <dxi-validation-rule
+            type="required"
+            message="Selecione um cliente.">
+          </dxi-validation-rule>
+        </dxi-data-grid-item>
+
+        <dxi-data-grid-item template="produtosTemplate" title="Adcionar Produtos" [colSpan]="2">
+
+
+        </dxi-data-grid-item>
+      </dxo-data-grid-form>
+    </dxo-data-grid-editing>
+
+    <dxi-data-grid-column dataField="nomeCliente" caption="Cliente"></dxi-data-grid-column>
+    <dxi-data-grid-column dataField="id" caption="Id da Nota"></dxi-data-grid-column>
+    <dxi-data-grid-column
+      dataField="valorTotal"
+      caption="Valor Total"
+      [format]="{ type: 'currency', currency: 'BRL', precision: 2 }"
+    ></dxi-data-grid-column>
+
+
+  </dx-data-grid>
+
+</div>
+

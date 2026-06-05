@@ -1,0 +1,100 @@
+<dx-button
+  text="voltar"
+  type="default"
+  icon="back"
+  [width]="150"
+  routerLink="/inicioloja/nota"
+>
+</dx-button>
+@if (idClienteSelecionado == 0) {
+  <div>
+    <h1>Escolha um cliente a baixo</h1>
+    <dx-select-box
+      [dataSource]="listaCliente"
+      (onValueChanged)="dxSelectCliente($event); console.log(idClienteSelecionado)"
+      valueExpr="id"
+      displayExpr="nome">
+    </dx-select-box>
+  </div>
+} @else {
+  <h1>Preencha os dados</h1>
+  <div>
+    <div >
+    <dx-validation-group class="produtos">
+      <dx-select-box
+        [dataSource]="listaProduto"
+        [(value)]="idProdutoSelecionado"
+        valueExpr="id"
+        [displayExpr]="formatar"
+        placeholder="Escolha o cliente"
+        width="60%">
+      </dx-select-box>
+
+
+        <dx-number-box [(value)]="quantidade" placeholder="Digite a quantidade">
+          <dx-validator>
+
+            <dxi-validation-rule
+              type="required"
+              message="Quantidade é obrigatorio">
+            </dxi-validation-rule>
+
+            <dxi-validation-rule
+              type="range"
+              [min]="1"
+              message="Quantidade deve ser maior que 0">
+            </dxi-validation-rule>
+          </dx-validator>
+        </dx-number-box>
+
+        <dx-button
+          text="Confirmar"
+          type="success"
+          icon="plus"
+          [width]="150"
+          (onClick)="adicionarProduto($event)"
+        >
+        </dx-button>
+      </dx-validation-group>
+
+    </div>
+    <dx-data-grid
+      id="gridContainer"
+      [dataSource]="listaProdutoSelecionados"
+      keyExpr="id"
+      [allowColumnReordering]="true"
+      [showBorders]="true"
+      (onRowRemoved)="onRowRemoved($event)"
+
+    >
+      <dxo-data-grid-paging [enabled]="true"></dxo-data-grid-paging>
+      <dxo-data-grid-editing
+        mode="row"
+        [allowDeleting]="true"
+
+      >
+      </dxo-data-grid-editing>
+
+
+      <dxi-data-grid-column dataField="nome"></dxi-data-grid-column>
+      <dxi-data-grid-column
+        dataField="valorTotal"
+        [format]="{ type: 'currency', currency: 'BRL', precision: 2 }"></dxi-data-grid-column>
+    </dx-data-grid>
+    <div class="parte-de-baixo">
+      <p><strong>Valor total: R$ {{ valorTotal.toFixed(2) }}</strong></p>
+      <dx-button
+        text="Salvar"
+        type="success"
+        icon="save"
+        [width]="300"
+        (onClick)="finalizarNota($event)"
+
+      >
+      </dx-button>
+    </div>
+
+
+  </div>
+
+}

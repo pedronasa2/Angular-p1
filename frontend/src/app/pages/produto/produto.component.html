@@ -1,0 +1,83 @@
+<dx-button
+  text="voltar"
+  type="default"
+  icon="back"
+  [width]="150"
+  routerLink="/inicioloja"
+>
+</dx-button>
+<div id="data-grid-demo">
+  <dx-data-grid
+    [dataSource]="listaDeProdutos"
+    keyExpr="id"
+    [showBorders]="true"
+    (onRowRemoved)="onRowRemoved($event)"
+    (onRowInserted)="onRowInserted($event)"
+    (onRowUpdated)="onRowUpdated($event)"
+  >
+    <dxo-search-panel
+      [visible]="true"
+      [width]="240"
+      placeholder="Pesquisar...">
+    </dxo-search-panel>
+
+    <dxo-data-grid-paging [enabled]="false"></dxo-data-grid-paging>
+    <dxo-data-grid-editing
+      mode="popup"
+      [allowUpdating]="true"
+      [allowAdding]="true"
+      [allowDeleting]="true"
+    >
+      <dxo-data-grid-popup
+        title="Informações cliente"
+        [showTitle]="true"
+        [width]="700"
+        [height]="525"
+      >
+      </dxo-data-grid-popup>
+      <dxo-data-grid-form>
+        <dxi-data-grid-item itemType="group" [colCount]="2" [colSpan]="2">
+
+          <dxi-data-grid-item dataField="nome" [colCount]="2" [colSpan]="2">
+            <dxi-validation-rule
+              type="required"
+              message="Nome é obrigatório.">
+            </dxi-validation-rule>
+          </dxi-data-grid-item>
+
+          <dxi-data-grid-item dataField="codigo" [colCount]="2" [colSpan]="2">
+            <dxi-validation-rule
+              type="required"
+              message="Código é obrigatório.">
+            </dxi-validation-rule>
+          </dxi-data-grid-item>
+
+          <dxi-data-grid-item dataField="valorUnitario" [colCount]="2" [colSpan]="2">
+            <dxi-validation-rule
+              type="required"
+              message="Valor unitário é obrigatório.">
+            </dxi-validation-rule>
+          </dxi-data-grid-item>
+
+          <dxi-data-grid-item editorType="dxTextArea" dataField="descricao" [colCount]="2" [colSpan]="2">
+          </dxi-data-grid-item>
+
+        </dxi-data-grid-item>
+
+
+      </dxo-data-grid-form>
+    </dxo-data-grid-editing>
+
+    <dxi-data-grid-column dataField="nome" caption="Nome">
+    </dxi-data-grid-column>
+    <dxi-data-grid-column dataField="codigo" caption="Codigo" width="100">
+    </dxi-data-grid-column>
+    <dxi-data-grid-column dataField="valorUnitario" caption="Valor do produto" width="200"
+                          [format]="{ type: 'currency', currency: 'BRL', precision: 2 }">
+    </dxi-data-grid-column>
+    <dxi-data-grid-column dataField="descricao" caption="Descrição" width="600">
+    </dxi-data-grid-column>
+
+  </dx-data-grid>
+</div>
+
