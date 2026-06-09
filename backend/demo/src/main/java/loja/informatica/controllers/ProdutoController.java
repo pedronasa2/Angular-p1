@@ -1,6 +1,7 @@
 package loja.informatica.controllers;
 
 import jakarta.validation.Valid;
+import loja.informatica.models.DadosProduto;
 import loja.informatica.service.ProdutoService;
 import loja.informatica.models.Cliente;
 import loja.informatica.repositorios.RepositoryProduto;
@@ -23,7 +24,7 @@ public class ProdutoController {
     private ProdutoService service;
 
     @PostMapping
-    public ResponseEntity adicionarProduto(@RequestBody @Valid Cliente.DadosProduto dados, UriComponentsBuilder uriBuilder){
+    public ResponseEntity adicionarProduto(@RequestBody @Valid DadosProduto dados, UriComponentsBuilder uriBuilder){
 
         try{
             var produto = service.add(dados);
@@ -75,7 +76,7 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity atualizar(@RequestBody Cliente.DadosProduto dados, @PathVariable Long id){
+    public ResponseEntity atualizar(@RequestBody DadosProduto dados, @PathVariable Long id){
 
         try{
             return ResponseEntity.ok(service.atualizarProduto(dados, id));

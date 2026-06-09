@@ -1,32 +1,32 @@
 import {
-  notify_default
-} from "./chunk-PKEU5AOW.js";
-import {
-  DxToolbarComponent,
-  DxToolbarModule
-} from "./chunk-647MAL2N.js";
-import {
   DxiTextBoxButtonModule,
   DxoTextBoxOptionsModule
-} from "./chunk-UGDLRQUX.js";
-import "./chunk-OHM4HJMX.js";
+} from "./chunk-R23RMQ2S.js";
+import {
+  DxScrollViewComponent,
+  DxScrollViewModule
+} from "./chunk-HP3FN6OI.js";
 import {
   DxTreeViewComponent,
   DxTreeViewModule
-} from "./chunk-NZCPE6EN.js";
-import "./chunk-FIUDMOES.js";
+} from "./chunk-2RJ7FHWP.js";
+import "./chunk-7KRASKK2.js";
 import {
   data_source_default as data_source_default2
-} from "./chunk-WVLUTQQG.js";
+} from "./chunk-VYK4SAAZ.js";
 import {
-  DxDropDownButtonComponent,
-  DxDropDownButtonModule
-} from "./chunk-Q6V3PSUP.js";
-import "./chunk-MRRIICIP.js";
+  notify_default
+} from "./chunk-ZRZLIT5R.js";
+import {
+  DxDrawerComponent,
+  DxDrawerModule,
+  drawer_default,
+  drawer_default2
+} from "./chunk-BJARRBFU.js";
 import {
   DxFormComponent,
   DxFormModule
-} from "./chunk-QSANHZEV.js";
+} from "./chunk-YCWUKZ6L.js";
 import {
   DxListComponent,
   DxListModule,
@@ -34,26 +34,22 @@ import {
   action_sheet_default,
   isCommonPosition,
   m_popover_default
-} from "./chunk-2LN47SLO.js";
-import "./chunk-VU7QBYS6.js";
-import "./chunk-HBPDQNYH.js";
+} from "./chunk-YTAWLEAC.js";
+import "./chunk-A6WFV6KR.js";
 import {
   DxLoadIndicatorComponent,
   DxLoadIndicatorModule
-} from "./chunk-LW6CMLTK.js";
+} from "./chunk-7URMHU6P.js";
+import "./chunk-GTSTPNI3.js";
 import {
-  DxScrollViewComponent,
-  DxScrollViewModule
-} from "./chunk-YLZ7HTE5.js";
+  DxToolbarComponent,
+  DxToolbarModule
+} from "./chunk-QFSIHYG6.js";
+import "./chunk-UOZRXN3V.js";
 import {
   DxButtonComponent,
   DxButtonModule
-} from "./chunk-A2IH6RWD.js";
-import {
-  DxContextMenuComponent,
-  DxContextMenuModule
-} from "./chunk-XQ3VXMOP.js";
-import "./chunk-EDAOVFAA.js";
+} from "./chunk-GCU4BBB7.js";
 import {
   AIColumnController,
   AIPromptEditorView,
@@ -172,22 +168,18 @@ import {
   validator_default,
   virtualColumnsModule,
   virtualScrollingModule
-} from "./chunk-EDJBLR3W.js";
+} from "./chunk-HTX54QET.js";
+import "./chunk-3XEMLYNT.js";
+import {
+  scroll_view_default as scroll_view_default2
+} from "./chunk-QRT4WSVQ.js";
+import {
+  tree_view_default
+} from "./chunk-HYTBFECU.js";
 import {
   toast_default,
   ui_overlay_default
-} from "./chunk-6VLQ33AC.js";
-import "./chunk-7OS2OZIL.js";
-import {
-  toolbar_default,
-  toolbar_default2
-} from "./chunk-7EX6OJAY.js";
-import {
-  tree_view_default
-} from "./chunk-AKE3AZLV.js";
-import {
-  button_group_default
-} from "./chunk-ULNGP7AO.js";
+} from "./chunk-7SITZGRF.js";
 import {
   DropDownButton,
   box_default,
@@ -219,48 +211,36 @@ import {
   ui_widget_default,
   validation_group_default,
   validation_summary_default
-} from "./chunk-W2TYBXYZ.js";
+} from "./chunk-Q7WYVJEQ.js";
 import {
   AIIntegration,
   color_default
-} from "./chunk-Y4YJHRQW.js";
+} from "./chunk-UCCRVPRM.js";
 import {
   DBLCLICK_EVENT_NAME
-} from "./chunk-H4KIRUTT.js";
-import {
-  getElementWidth,
-  ui_collection_widget_edit_default
-} from "./chunk-AUEZ5SO2.js";
+} from "./chunk-KKAADEME.js";
 import {
   m_draggable_default
-} from "./chunk-PRDURCLA.js";
+} from "./chunk-ZR6NYGJE.js";
 import {
   check_box_default
-} from "./chunk-HW7I3JJU.js";
+} from "./chunk-VKHLBLEN.js";
 import {
   editor_default as editor_default2
-} from "./chunk-AUTB4M7T.js";
+} from "./chunk-HEDAYVS3.js";
 import {
-  list_edit_default,
-  list_edit_search_default
-} from "./chunk-C6SPFXLK.js";
+  toolbar_default,
+  toolbar_default2
+} from "./chunk-RFIQLASB.js";
 import {
-  collection_widget_live_update_default,
-  m_popup_default,
-  resizable_default
-} from "./chunk-FDT7WC77.js";
-import {
-  scroll_view_default as scroll_view_default2
-} from "./chunk-7YHHYQEE.js";
-import {
-  load_panel_default,
-  scroll_view_default
-} from "./chunk-X5DP3PUE.js";
+  DxContextMenuComponent,
+  DxContextMenuModule
+} from "./chunk-757W4KBZ.js";
 import {
   context_menu_default,
   context_menu_default2
-} from "./chunk-GXGJQOYS.js";
-import "./chunk-FOFOCDDP.js";
+} from "./chunk-REBS7EK4.js";
+import "./chunk-Z4KWWPMX.js";
 import {
   ClearButton,
   TEXTEDITOR_INPUT_CONTAINER_CLASS,
@@ -268,8 +248,34 @@ import {
   editor_default,
   m_text_box_default,
   utils_caret_default
-} from "./chunk-OJDXYR6A.js";
-import "./chunk-STRL6EEI.js";
+} from "./chunk-VKWXXDKE.js";
+import "./chunk-7X4GRBM7.js";
+import {
+  DxDropDownButtonComponent,
+  DxDropDownButtonModule
+} from "./chunk-PAALEO6A.js";
+import "./chunk-BEAG2IBA.js";
+import {
+  button_group_default
+} from "./chunk-3S7EX6LR.js";
+import {
+  getElementWidth,
+  ui_collection_widget_edit_default
+} from "./chunk-GF4XIA43.js";
+import {
+  list_edit_default,
+  list_edit_search_default
+} from "./chunk-KDP57T3T.js";
+import {
+  collection_widget_live_update_default,
+  m_popup_default,
+  resizable_default
+} from "./chunk-I5MJMULH.js";
+import {
+  load_panel_default,
+  scroll_view_default
+} from "./chunk-FY3GIQVT.js";
+import "./chunk-U73LXQGM.js";
 import {
   BindableTemplate,
   Selection,
@@ -281,7 +287,7 @@ import {
   name,
   resizeObserverSingleton,
   resize_observer_default
-} from "./chunk-EADW2SLN.js";
+} from "./chunk-THNGEDWE.js";
 import {
   DxiAlertModule,
   DxiAnnotationModule,
@@ -520,15 +526,31 @@ import {
   DxoWidthModule,
   DxoZoomAndPanModule,
   DxoZoomLevelModule
-} from "./chunk-RTZSKIDQ.js";
+} from "./chunk-75JPJDTG.js";
 import {
   scrollable_default
-} from "./chunk-7O5K47C3.js";
+} from "./chunk-C5JCDOJU.js";
+import {
+  DRAG_END_EVENT,
+  DRAG_ENTER_EVENT,
+  DRAG_EVENT,
+  DRAG_LEAVE_EVENT,
+  DRAG_START_EVENT,
+  DROP_EVENT,
+  create,
+  overlay_default,
+  remove,
+  swatch_container_default
+} from "./chunk-MRUWCH4R.js";
 import {
   AnimationType,
   load_indicator_default,
   load_indicator_default2
-} from "./chunk-UZPV5REL.js";
+} from "./chunk-QHTRXNIS.js";
+import {
+  EMPTY_ACTIVE_STATE_UNIT,
+  widget_default
+} from "./chunk-XMDFBM6U.js";
 import {
   BUTTON_CLASS,
   BaseInfernoComponent,
@@ -559,85 +581,23 @@ import {
   render2,
   rerender,
   toFixed
-} from "./chunk-G4HHHCUP.js";
+} from "./chunk-DYRFAZWX.js";
 import {
   m_emitter_gesture_scroll_default
-} from "./chunk-646P65OQ.js";
+} from "./chunk-O5MJYSXG.js";
+import "./chunk-RCOIZXCE.js";
 import {
   core_default,
   message_default,
   message_default2
-} from "./chunk-EMRGXNWD.js";
+} from "./chunk-NSTBCPOI.js";
 import {
   current,
   isCompact,
   isFluent,
   isMaterial,
   isMaterialBased
-} from "./chunk-J6BDSVIG.js";
-import {
-  PROPERTY_TOKEN_alerts,
-  PROPERTY_TOKEN_annotations,
-  PROPERTY_TOKEN_attachments,
-  PROPERTY_TOKEN_breaks,
-  PROPERTY_TOKEN_buttons,
-  PROPERTY_TOKEN_center,
-  PROPERTY_TOKEN_changes,
-  PROPERTY_TOKEN_cols,
-  PROPERTY_TOKEN_columns,
-  PROPERTY_TOKEN_commands,
-  PROPERTY_TOKEN_connectionPoints,
-  PROPERTY_TOKEN_constantLines,
-  PROPERTY_TOKEN_customOperations,
-  PROPERTY_TOKEN_customShapes,
-  PROPERTY_TOKEN_fields,
-  PROPERTY_TOKEN_fileSelectionItems,
-  PROPERTY_TOKEN_groups,
-  PROPERTY_TOKEN_items,
-  PROPERTY_TOKEN_layers,
-  PROPERTY_TOKEN_legends,
-  PROPERTY_TOKEN_location,
-  PROPERTY_TOKEN_locations,
-  PROPERTY_TOKEN_markers,
-  PROPERTY_TOKEN_mentions,
-  PROPERTY_TOKEN_panes,
-  PROPERTY_TOKEN_ranges,
-  PROPERTY_TOKEN_resources,
-  PROPERTY_TOKEN_routes,
-  PROPERTY_TOKEN_rows,
-  PROPERTY_TOKEN_series,
-  PROPERTY_TOKEN_stripLines,
-  PROPERTY_TOKEN_strips,
-  PROPERTY_TOKEN_tabs,
-  PROPERTY_TOKEN_toolbarItems,
-  PROPERTY_TOKEN_typingUsers,
-  PROPERTY_TOKEN_validationRules,
-  PROPERTY_TOKEN_valueAxis,
-  PROPERTY_TOKEN_views
-} from "./chunk-5SOYEOJI.js";
-import {
-  DxDrawerComponent,
-  DxDrawerModule,
-  drawer_default,
-  drawer_default2
-} from "./chunk-M4I5AQW3.js";
-import {
-  DRAG_END_EVENT,
-  DRAG_ENTER_EVENT,
-  DRAG_EVENT,
-  DRAG_LEAVE_EVENT,
-  DRAG_START_EVENT,
-  DROP_EVENT,
-  create,
-  overlay_default,
-  remove,
-  swatch_container_default
-} from "./chunk-VLTKSH4G.js";
-import {
-  EMPTY_ACTIVE_STATE_UNIT,
-  widget_default
-} from "./chunk-GIPB2Z36.js";
-import "./chunk-3PDP5MJ3.js";
+} from "./chunk-LM5R4DYR.js";
 import {
   CLICK_EVENT_NAME,
   ChildDefaultTemplate,
@@ -693,7 +653,7 @@ import {
   transition_executor_default,
   triggerResizeEvent,
   wrapToArray
-} from "./chunk-4VCY6VPW.js";
+} from "./chunk-ZEJQR3EJ.js";
 import {
   Cache,
   adjust,
@@ -721,11 +681,51 @@ import {
   solveCubicEquation,
   trunc,
   value
-} from "./chunk-KTSDTV35.js";
+} from "./chunk-NIFQ4FPY.js";
 import {
   dateUtilsTs,
   ui_errors_default
-} from "./chunk-V5IPHRES.js";
+} from "./chunk-MDWXFVNY.js";
+import {
+  PROPERTY_TOKEN_alerts,
+  PROPERTY_TOKEN_annotations,
+  PROPERTY_TOKEN_attachments,
+  PROPERTY_TOKEN_breaks,
+  PROPERTY_TOKEN_buttons,
+  PROPERTY_TOKEN_center,
+  PROPERTY_TOKEN_changes,
+  PROPERTY_TOKEN_cols,
+  PROPERTY_TOKEN_columns,
+  PROPERTY_TOKEN_commands,
+  PROPERTY_TOKEN_connectionPoints,
+  PROPERTY_TOKEN_constantLines,
+  PROPERTY_TOKEN_customOperations,
+  PROPERTY_TOKEN_customShapes,
+  PROPERTY_TOKEN_fields,
+  PROPERTY_TOKEN_fileSelectionItems,
+  PROPERTY_TOKEN_groups,
+  PROPERTY_TOKEN_items,
+  PROPERTY_TOKEN_layers,
+  PROPERTY_TOKEN_legends,
+  PROPERTY_TOKEN_location,
+  PROPERTY_TOKEN_locations,
+  PROPERTY_TOKEN_markers,
+  PROPERTY_TOKEN_mentions,
+  PROPERTY_TOKEN_panes,
+  PROPERTY_TOKEN_ranges,
+  PROPERTY_TOKEN_resources,
+  PROPERTY_TOKEN_routes,
+  PROPERTY_TOKEN_rows,
+  PROPERTY_TOKEN_series,
+  PROPERTY_TOKEN_stripLines,
+  PROPERTY_TOKEN_strips,
+  PROPERTY_TOKEN_tabs,
+  PROPERTY_TOKEN_toolbarItems,
+  PROPERTY_TOKEN_typingUsers,
+  PROPERTY_TOKEN_validationRules,
+  PROPERTY_TOKEN_valueAxis,
+  PROPERTY_TOKEN_views
+} from "./chunk-5SOYEOJI.js";
 import {
   BaseNestedOption,
   CollectionNestedOption,
@@ -749,14 +749,14 @@ import {
   getElement,
   getServerStateKey,
   logWarning
-} from "./chunk-GVQ7VOQO.js";
+} from "./chunk-WD3IMXQL.js";
 import {
   Event,
   off,
   on,
   one,
   trigger
-} from "./chunk-ZF2YRQQJ.js";
+} from "./chunk-7ZUTIQP2.js";
 import "./chunk-G6HUHDH7.js";
 import {
   getDOM
@@ -843,14 +843,14 @@ import {
   m_endpoint_selector_default,
   m_local_store_default,
   m_store_default
-} from "./chunk-CDTDEDAA.js";
+} from "./chunk-B6OBA7YY.js";
 import {
   data_source_default
-} from "./chunk-KWFHDQ6I.js";
+} from "./chunk-UCR5OMPM.js";
 import {
   DataHelperMixin,
   m_data_helper_default
-} from "./chunk-IDRRFLP7.js";
+} from "./chunk-3HK4N3PX.js";
 import {
   DataSource,
   aggregators,
@@ -871,13 +871,13 @@ import {
   normalizeDataSourceOptions,
   normalizeLoadResult,
   setErrorHandler
-} from "./chunk-LD66THDH.js";
+} from "./chunk-DJ7RTOYQ.js";
 import {
   _objectWithoutPropertiesLoose
 } from "./chunk-E3OZNAC5.js";
 import {
   EventsStrategy
-} from "./chunk-HNNPSSXJ.js";
+} from "./chunk-CQRTU7GC.js";
 import {
   camelize,
   captionize,
@@ -902,14 +902,14 @@ import {
   setWidth2,
   styleProp,
   titleize
-} from "./chunk-H2RLU3GL.js";
+} from "./chunk-42LWKVRW.js";
 import {
   call_once_default,
   m_events_engine_default
-} from "./chunk-WDK64ZWV.js";
+} from "./chunk-RVHBILIM.js";
 import {
   ajax_default
-} from "./chunk-PTEJQ6I5.js";
+} from "./chunk-BEACR4F5.js";
 import {
   Deferred,
   Guid,
@@ -971,7 +971,7 @@ import {
   type,
   version,
   when
-} from "./chunk-CPBGCP6I.js";
+} from "./chunk-2HPHVHZJ.js";
 import {
   __async,
   __commonJS,

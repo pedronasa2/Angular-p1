@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -15,12 +16,10 @@ public class ItenNota {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;
-
-    private String codigoProduto;
+    @ManyToOne
+    private Produto produto;
 
     private BigDecimal valorTotal;
-
 
     private Long quantidade;
 
@@ -30,10 +29,15 @@ public class ItenNota {
 
     public ItenNota(Produto produto){
 
-        this.codigoProduto = produto.getCodigo();
-        this.nome = produto.getNome();
         this.valorTotal = produto.getValorUnitario();
 
     }
 
+    public ItenNota(Long id, Produto produto, BigDecimal valorTotal, Long quantidade, NotaFiscal notaFiscal) {
+        this.id = id;
+        this.produto = produto;
+        this.valorTotal = valorTotal;
+        this.quantidade = quantidade;
+        this.notaFiscal = notaFiscal;
+    }
 }

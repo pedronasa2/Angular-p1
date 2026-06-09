@@ -2,6 +2,7 @@ package loja.informatica.repositorios;
 
 import jakarta.validation.constraints.NotBlank;
 import loja.informatica.models.Cliente;
+import loja.informatica.models.DadosProduto;
 import loja.informatica.models.Produto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,5 +15,5 @@ public interface RepositoryProduto extends JpaRepository<Produto, Long> {
 
     Produto getReferenceByCodigo(String codigo);
 
-    Page<Cliente.DadosProduto> findAllByAtivoTrue(Pageable paginacao);
+    Page<DadosProduto> findAllByAtivoTrue(Pageable paginacao);
 }

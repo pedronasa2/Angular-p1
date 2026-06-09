@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Nota} from './nota.service';
+import {Cliente} from '../../class/cliente';
+import {Nota} from '../../class/nota';
+export { Cliente } from '../../class/cliente';
 
-export class Cliente{
 
-  public id!:number;
-  public codigo!:string;
-  public nome!:string;
-  public nota!:Nota[];
-}
 @Injectable({
   providedIn: 'root',
 })

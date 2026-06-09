@@ -1,9 +1,7 @@
 package loja.informatica.service;
 
 import jakarta.transaction.Transactional;
-import loja.informatica.models.Cliente;
-import loja.informatica.models.NotaFiscal;
-import loja.informatica.models.ItenNota;
+import loja.informatica.models.*;
 import loja.informatica.repositorios.RepositoryItenNota;
 import loja.informatica.repositorios.RepositoryNotaFiscal;
 import loja.informatica.repositorios.RepositoryProduto;
@@ -11,8 +9,10 @@ import loja.informatica.repositorios.RepositoryCliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -30,35 +30,35 @@ public class NotaFiscalService {
     @Autowired
     private RepositoryCliente repositoryCliente;
 
-    public Cliente.DadosNotafiscal criarNota(Long idCliente){
+    public DadosNotaFiscal criarNota(Long idCliente){
 
         if (repositoryCliente.existsById(idCliente)){
             var cliente = repositoryCliente.getReferenceById(idCliente);
             var nota = new NotaFiscal(cliente);
-            return new Cliente.DadosNotafiscal(nota);
+            return new DadosNotaFiscal(nota);
         }
         throw new RuntimeException("Id do cliente não exite");
     }
 
-    public List<Cliente.DadosNotafiscal> listarTodas() {
+    public List<DadosNotaFiscal> listarTodas() {
 
 
-        List<Cliente.DadosNotafiscal> lista = new ArrayList<>();
-        repositoryNotaFiscal.findAll().forEach(n -> lista.add(new Cliente.DadosNotafiscal(n)));
+        List<DadosNotaFiscal> lista = new ArrayList<>();
+        repositoryNotaFiscal.findAll().forEach(n -> lista.add(new DadosNotaFiscal(n)));
         return lista;
 
     }
 
-    public Cliente.DadosNotafiscal listaItem(Long id) {
+    public DadosNotaFiscal listaItem(Long id) {
 
         if (repositoryNotaFiscal.existsById(id)){
-            return new Cliente.DadosNotafiscal(repositoryNotaFiscal.getReferenceById(id));
+            return new DadosNotaFiscal(repositoryNotaFiscal.getReferenceById(id));
         }
         throw new RuntimeException("Id da nota não exite");
 
     }
 
-    public Cliente.DadosNotafiscal adicionarProduto(Long idNota, Long idProduto) {
+    public DadosNotaFiscal adicionarProduto(Long idNota, Long idProduto) {
 
         if (!repositoryNotaFiscal.existsById(idNota)){
             throw new RuntimeException("Não foi possivel acha a nota com o id: " + idNota );
@@ -74,7 +74,7 @@ public class NotaFiscalService {
         repositoryItenNota.save(item);
 
 
-        return new Cliente.DadosNotafiscal(nota);
+        return new DadosNotaFiscal(nota);
     }
 
     public void adicionarProdutos(Long id, List<ItenNota> produtos) {
@@ -87,15 +87,22 @@ public class NotaFiscalService {
         }
     }
 
-    public NotaFiscal criarNotaComItens(Long idCliente, List<ItenNota> produtos) {
-
+    public NotaFiscal criarNotaComItens(Long idCliente, List<DadosCadastroItem> itens) {
         var cliente = repositoryCliente.findById(idCliente)
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
 
         NotaFiscal nota = new NotaFiscal(cliente);
 
-        for (ItenNota item : produtos) {
+        for (DadosCadastroItem dto : itens) {
+            var produto = repositoryProduto.findById(dto.idProduto())
+                    .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+
+            ItenNota item = new ItenNota();
+            item.setProduto(produto);
+            item.setQuantidade(dto.quantidade());
+            item.setValorTotal(dto.valorTotal());
             item.setNotaFiscal(nota);
+
             nota.adicionasItens(item);
         }
 
@@ -104,5 +111,59 @@ public class NotaFiscalService {
 
     public void deletarPorId(Long id) {
         repositoryNotaFiscal.deleteById(id);
+    }
+
+
+    public NotaFiscal criarNotaCompleta(DadosCadastroNotaCompleta dadosCadastro) {
+
+        var cliente = repositoryCliente.getReferenceById(dadosCadastro.cliente().id());
+
+        NotaFiscal nota = new NotaFiscal(cliente);
+        nota.setData(dadosCadastro.data());
+
+
+        for (DadosCadastroItem dados : dadosCadastro.listaItens()) {
+            var produto = repositoryProduto.getReferenceById(dados.idProduto());
+
+            ItenNota item = new ItenNota();
+            item.setProduto(produto);
+            item.setQuantidade(dados.quantidade());
+            item.setValorTotal(dados.valorTotal());
+            item.setNotaFiscal(nota);
+
+            nota.adicionasItens(item);
+        }
+
+        return repositoryNotaFiscal.save(nota);
+    }
+
+    public DadosNotaFiscal atualizarNota(DadosCadastroNotaCompleta dadosCadastro) {
+
+        var cliente = repositoryCliente.getReferenceById(dadosCadastro.cliente().id());
+
+
+        NotaFiscal nota = repositoryNotaFiscal.getReferenceById(dadosCadastro.id());
+        nota.setCliente(cliente);
+        if (dadosCadastro.data() != null){nota.setData(dadosCadastro.data());}
+
+        List<ItenNota> lista = new ArrayList<>();
+        nota.getListaItens().clear();
+        BigDecimal novoValorTotal = BigDecimal.ZERO;
+        for (DadosCadastroItem dados : dadosCadastro.listaItens()) {
+            var produto = repositoryProduto.getReferenceById(dados.idProduto());
+
+            ItenNota item = new ItenNota();
+            item.setProduto(produto);
+            item.setQuantidade(dados.quantidade());
+            item.setValorTotal(dados.valorTotal());
+            item.setNotaFiscal(nota);
+            repositoryItenNota.save(item);
+            lista.add(item);
+            nota.getListaItens().add(item);
+            novoValorTotal = novoValorTotal.add(dados.valorTotal());
+            }
+        nota.setValorTotal(novoValorTotal);
+
+        return new DadosNotaFiscal(repositoryNotaFiscal.save(nota));
     }
 }

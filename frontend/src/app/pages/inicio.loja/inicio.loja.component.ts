@@ -1,9 +1,10 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {Cliente, ClienteService} from '../../shared/services/loja/cliente.service';
-import {Produto, ProdutoService} from '../../shared/services/loja/produto.service';
+import {ProdutoService} from '../../shared/services/loja/produto.service';
 import {Nota, NotaService} from '../../shared/services/loja/nota.service';
 import {DxButtonComponent} from 'devextreme-angular';
 import {RouterLink} from '@angular/router';
+import {Produto} from '../../shared/class/produto';
 
 
 

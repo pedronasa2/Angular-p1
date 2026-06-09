@@ -1,52 +1,10 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-
-export class Produto{
-  id!: number;
-
-  nome!: string;
-
-  codigo!: string;
-
-  valorUnitario!: number;
-
-  descricao!: string;
-
-  quantidade!: number;
-
-  valorTotal!: number;
-
-}
-
-export class ItemNota{
-
-  id!: number;
-
-  nome!: string;
-
-  codigo!: string;
-
-  valorUnitario!: number;
-
-  descricao!: string;
-
-  quantidade!: number;
-
-  valorTotal!: number;
+import {Produto} from '../../class/produto';
 
 
-  constructor(private  produto:Produto) {
-    this.id = produto.id;
-    this.nome = produto.nome;
-    this.codigo = produto.codigo;
-    this.valorUnitario = produto.valorUnitario;
-    this.descricao = produto.descricao;
-    this.quantidade = produto.quantidade;
-    this.valorTotal = produto.valorTotal;
-  }
 
-}
 @Injectable({
   providedIn: 'root',
 })

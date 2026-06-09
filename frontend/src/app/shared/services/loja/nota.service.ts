@@ -1,19 +1,13 @@
 import { Injectable } from '@angular/core';
-import {Cliente} from './cliente.service';
-import {ItemNota, Produto} from './produto.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Nota} from '../../class/nota';
+import {ItenNota} from '../../class/iten-nota';
+export { Nota } from '../../class/nota';
 
 
-export class Nota{
-  public id!: number;
-  public cliente!: Cliente;
-  public data!:string;
-  public valorTotal!: number;
-  public listaItens!: Produto[];
 
 
-}
 @Injectable({
   providedIn: 'root',
 })
@@ -30,13 +24,13 @@ export class NotaService {
   }
 
 
-  criarNota(idCliente: number, listaProdutos: any):Observable<Nota> {
+  criarNota(nota: any):Observable<Nota> {
 
-    return this.http.post<Nota>(this.urlCliente + "/" + idCliente + "/produtos", listaProdutos);
+    return this.http.post<Nota>(this.urlCliente, nota);
   }
 
-  adcionarProduto(idNota: number, idProduto: number):Observable<Nota>{
-    return this.http.put<Nota>(this.urlCliente +"/" +idNota + "/adcionar/" + idProduto, {});
+  atualizarNota(nota: any):Observable<Nota>{
+    return this.http.put<Nota>(this.urlCliente, nota);
   }
 
   deletarPorId(id: number):Observable<any> {

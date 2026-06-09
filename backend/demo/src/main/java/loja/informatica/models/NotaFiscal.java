@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -22,12 +23,12 @@ public class NotaFiscal {
     @ManyToOne
     private Cliente cliente;
 
-    private LocalDateTime data = LocalDateTime.now();
+    private LocalDateTime data;
 
-    private BigDecimal valorTotal = new BigDecimal(0);
+    private BigDecimal valorTotal = BigDecimal.ZERO;
 
 
-    @OneToMany(mappedBy = "notaFiscal", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "notaFiscal", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItenNota> listaItens = new ArrayList<>();
 
     public NotaFiscal(Cliente cliente) {
@@ -39,5 +40,16 @@ public class NotaFiscal {
         this.valorTotal = this.valorTotal.add(item.getValorTotal());
     }
 
-
+    public void atualizarDados(DadosCadastroNotaCompleta nota, List<ItenNota> itensConvertidos) {
+        if (nota.cliente() != null) {
+            this.cliente = new Cliente(nota.cliente());
+        }
+        if (nota.data() != null) {
+            this.data = nota.data();
+        }
+        if (itensConvertidos != null && !itensConvertidos.isEmpty()) {
+            this.listaItens = itensConvertidos;
+            itensConvertidos.forEach(i -> this.valorTotal.add(i.getValorTotal()));
+        }
+    }
 }

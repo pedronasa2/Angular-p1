@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Produto, ProdutoService} from '../../shared/services/loja/produto.service';
+import {ProdutoService} from '../../shared/services/loja/produto.service';
 import {DxButtonComponent, DxDataGridComponent} from 'devextreme-angular';
 import {
   DxiDataGridColumnComponent,
@@ -7,6 +7,8 @@ import {
   DxoDataGridEditingComponent, DxoDataGridFormComponent, DxoDataGridPagingComponent, DxoDataGridPopupComponent
 } from 'devextreme-angular/ui/data-grid';
 import {DxiValidationRuleComponent, DxoSearchPanelComponent} from 'devextreme-angular/ui/nested';
+import {Produto} from '../../shared/class/produto';
+import {RouterLink} from '@angular/router';
 
 
 @Component({
@@ -21,7 +23,8 @@ import {DxiValidationRuleComponent, DxoSearchPanelComponent} from 'devextreme-an
     DxoDataGridPopupComponent,
     DxoSearchPanelComponent,
     DxiValidationRuleComponent,
-    DxButtonComponent
+    DxButtonComponent,
+    RouterLink
   ],
   templateUrl: './produto.component.html',
   styleUrl: './produto.component.scss',

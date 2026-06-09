@@ -9,18 +9,17 @@
 <div class="pricipal">
 
   <h1>Lista de nota fiscais</h1>
-  <dx-button
-    text="Adicionar nota"
-    type="default"
-    icon="plus"
-    routerLink="/inicioloja/nota/adcionar">
-  </dx-button>
+
 
   <dx-data-grid
     [dataSource]="listaDeNotas"
-    keyExpr="id"
     [showBorders]="true"
+    keyExpr="id"
     (onRowRemoved)="onRowRemoved($event)"
+    (onRowInserted)="onRowInserted($event)"
+    (onEditingStart)="onEditingStart($event); console.log($event)"
+    (onSaved)="onSaved($event); console.log($event)"
+    (onEditCanceled)="onEditCanceled($event)"
     >
 
 
@@ -30,43 +29,125 @@
     <dxo-data-grid-search-panel
       [visible]="true"
       [width]="240"
-      placeholder="Search..."
+      placeholder="Procurar"
     ></dxo-data-grid-search-panel>
 
 
     <dxo-data-grid-editing
       mode="popup"
       [allowDeleting]="true"
+      [allowAdding] = "true"
+      [allowUpdating]="true"
 
       >
 
-      <dxo-data-grid-popup title="Criar Nota Fiscal" [width]="700" [height]="600"></dxo-data-grid-popup>
-
+      <dxo-data-grid-popup title="Criar Nota Fiscal"></dxo-data-grid-popup>
+      <h1>Preencha os dados</h1>
       <dxo-data-grid-form>
+        <dxi-data-grid-item template="tituloTemplate" [colSpan]="2"></dxi-data-grid-item>
+
+        <div *dxTemplate="let data of 'tituloTemplate'">
+          <h1>
+            {{ edicao ? 'Editar Nota Fiscal' : 'Nova Nota Fiscal' }}
+          </h1>
+        </div>
+
+
         <dxi-data-grid-item
-          dataField="Cliente"
-          editorType="dxSelectBox"
-          [colSpan]="2"
+          dataField="data"
+          editorType="dxDateBox"
           [editorOptions]="{
-          dataSource: listaDeClientes,
-          valueExpr: 'id',
-          displayExpr: 'nome',
-          searchEnabled: true }"
+    displayFormat: 'dd/MM/yyyy',
+    useMaskBehavior: true,
+    openOnFieldClick: true
+  }"
         >
           <dxi-validation-rule
             type="required"
             message="Selecione um cliente.">
           </dxi-validation-rule>
         </dxi-data-grid-item>
+          <dxi-data-grid-item
+            dataField="cliente.id"
+            editorType="dxSelectBox"
+            [colSpan]="2"
+            [editorOptions]="{
+          dataSource: listaDeClientes,
+          displayExpr: 'nome',
+          valueExpr: 'id',
+          searchEnabled: true }"
+          >
+            <dxi-validation-rule
+              type="required"
+              message="Selecione um cliente.">
+            </dxi-validation-rule>
+          </dxi-data-grid-item>
 
-        <dxi-data-grid-item template="produtosTemplate" title="Adcionar Produtos" [colSpan]="2">
 
 
-        </dxi-data-grid-item>
+
+        <dxi-data-grid-item template="produtosTemplate" title="Adcionar Produtos" [colSpan]="2"></dxi-data-grid-item>
+        <div *dxTemplate="let cellInfo of 'produtosTemplate'">
+          <h4>Escolha os produtos</h4>
+            <dx-data-grid
+              [(dataSource)]="listaDeItens"
+              datatype="itenNota"
+              [showBorders]="true"
+              (onRowRemoved)="console.log($event)"
+              (onRowInserted)="onRowInsertedItem($event); console.log($event)"
+              (onRowUpdating)="onRowUpdatingItem($event)"
+            >
+              onRowRemovedItem($event)
+              onRowInsertedItem($event)
+              <dxo-data-grid-header-filter
+                [visible]="true"
+              ></dxo-data-grid-header-filter>
+
+              <dxo-data-grid-editing
+                mode="row"
+                [allowDeleting]="true"
+                [allowAdding] = "true"
+                [allowUpdating] = "true"
+              >
+
+
+
+              </dxo-data-grid-editing>
+
+              <dxi-data-grid-column dataField="produto.id" caption="Produto">
+                <dxo-data-grid-lookup
+                  [dataSource]="listaDeProdutos"
+                  displayExpr="nome"
+                  valueExpr="id">
+                </dxo-data-grid-lookup>
+              </dxi-data-grid-column>
+
+              <dxi-data-grid-column dataField="quantidade" caption="Quantidade"></dxi-data-grid-column>
+              <dxi-data-grid-column
+                dataField="valorTotal"
+                caption="Valor Total"
+                [allowEditing]="false"
+                [format]="{ type: 'currency', currency: 'BRL', precision: 2 }"
+              ></dxi-data-grid-column>
+
+
+
+            </dx-data-grid>
+          <dx-button (onClick)="console.log(listaDeItens)"></dx-button>
+          </div>
+
+
       </dxo-data-grid-form>
     </dxo-data-grid-editing>
 
-    <dxi-data-grid-column dataField="nomeCliente" caption="Cliente"></dxi-data-grid-column>
+    <dxi-data-grid-column dataField="cliente.id" caption="Cliente">
+      <dxo-data-grid-lookup
+        [dataSource]="listaDeClientes"
+        valueExpr="id"
+        displayExpr="nome">
+      </dxo-data-grid-lookup>
+    </dxi-data-grid-column>
+    <dxi-data-grid-column dataField="data" dataType="date" caption="Data"></dxi-data-grid-column>
     <dxi-data-grid-column dataField="id" caption="Id da Nota"></dxi-data-grid-column>
     <dxi-data-grid-column
       dataField="valorTotal"
@@ -75,7 +156,8 @@
     ></dxi-data-grid-column>
 
 
-  </dx-data-grid>
 
+  </dx-data-grid>
+  <dx-button (onClick)="console.log(listaDeNotas)"></dx-button>
 </div>
 

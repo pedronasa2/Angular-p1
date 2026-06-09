@@ -30,7 +30,7 @@ public class Produto {
     private Boolean ativo = true;
 
 
-    public Produto(Cliente.DadosProduto dados) {
+    public Produto(DadosProduto dados) {
 
         this.nome = dados.nome();
         this.codigo = dados.codigo();
@@ -38,15 +38,23 @@ public class Produto {
         this.descricao = dados.descricao();
     }
 
-    public void atualizarInfomacoes(Cliente.DadosProduto dados) {
+    public void atualizarInfomacoes(DadosProduto dados) {
 
-        if(dados.codigo() != null){this.codigo = dados.codigo();}
-        if(dados.nome() != null){this.nome = dados.nome();}
-        if(dados.valorUnitario() != null){this.valorUnitario = dados.valorUnitario();}
-        if(dados.descricao() != null){this.descricao = dados.descricao();}
-        if(dados.ativo() != null){this.ativo = dados.ativo();}
+        if (dados.codigo() != null) {
+            this.codigo = dados.codigo();
+        }
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.valorUnitario() != null) {
+            this.valorUnitario = dados.valorUnitario();
+        }
+        if (dados.descricao() != null) {
+            this.descricao = dados.descricao();
+        }
+    }
     }
 
 
 
-}
+

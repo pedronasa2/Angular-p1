@@ -17,7 +17,6 @@ import {NotaComponent} from './pages/nota/nota.component';
 import {ClienteComponent} from './pages/cliente/cliente.component';
 import {ProdutoComponent} from './pages/produto/produto.component';
 import {InicioLojaComponent} from './pages/inicio.loja/inicio.loja.component';
-import {NotaAdcionarComponent} from './pages/nota.adcionar/nota.adcionar.component';
 
 
 export const routes: Routes = [
@@ -81,11 +80,6 @@ export const routes: Routes = [
   {
     path: 'inicioloja/nota',
     component: NotaComponent,
-
-  },
-  {
-    path: 'inicioloja/nota/adcionar',
-    component: NotaAdcionarComponent,
 
   },
   {

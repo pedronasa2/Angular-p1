@@ -1,7 +1,9 @@
 package loja.informatica.controllers;
 
-import jakarta.transaction.Transactional;
-import loja.informatica.models.Cliente;
+
+import loja.informatica.models.DadosCadastroItem;
+import loja.informatica.models.DadosCadastroNotaCompleta;
+import loja.informatica.models.DadosNotaFiscal;
 import loja.informatica.models.ItenNota;
 import loja.informatica.service.NotaFiscalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/notafiscal")
 @CrossOrigin(origins = "*")
 public class NotaFiscalController {
@@ -20,16 +22,24 @@ public class NotaFiscalController {
     @Autowired
     private NotaFiscalService service;
 
+    @PostMapping
+    public ResponseEntity criarNotaCompleta(@RequestBody DadosCadastroNotaCompleta dados) {
+        try {
+            var nota = service.criarNotaCompleta(dados);
+            return ResponseEntity.ok(new DadosNotaFiscal(nota));
+        } catch (Exception e ){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
     @PostMapping("/{idCliente}/produtos")
-
-    public ResponseEntity criarNotaComProdutos(@PathVariable Long idCliente, @RequestBody List<ItenNota> produtos){
-    try {
-        var nota = service.criarNotaComItens(idCliente, produtos);
-        return ResponseEntity.ok(new Cliente.DadosNotafiscal(nota));
-    }catch (Exception e ){
-        return ResponseEntity.badRequest().body(e.getMessage());
-    }
+    public ResponseEntity criarNotaComProdutos(@PathVariable Long idCliente, @RequestBody List<DadosCadastroItem> produtos) {
+        try {
+            var nota = service.criarNotaComItens(idCliente, produtos);
+            return ResponseEntity.ok(new DadosNotaFiscal(nota));
+        } catch (Exception e ){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/{idCliente}")
@@ -61,10 +71,10 @@ public class NotaFiscalController {
         }
     }
 
-    @PutMapping ("/{idNota}/adcionar/{idProduto}")
-    public ResponseEntity adcionarItem(@PathVariable Long idNota, @PathVariable Long idProduto){
+    @PutMapping()
+    public ResponseEntity adcionarItem(@RequestBody DadosCadastroNotaCompleta nota) {
         try{
-            return ResponseEntity.ok(service.adicionarProduto(idNota, idProduto));
+            return ResponseEntity.ok(service.atualizarNota(nota));
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e);
         }

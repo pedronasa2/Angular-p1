@@ -3,14 +3,16 @@ package loja.informatica.models;
 import java.math.BigDecimal;
 
 public record DadosItem(
-                        String codigo,
+                        Long id,
 
-                        String nome,
+                        DadosProduto produto,
 
-                        BigDecimal valorTotal
 
+                        BigDecimal valorTotal,
+
+                        Long quantidade
                         ) {
     public DadosItem(ItenNota itenNota) {
-        this(itenNota.getCodigoProduto(), itenNota.getNome(), itenNota.getValorTotal() );
+        this(itenNota.getId() ,new DadosProduto(itenNota.getProduto()),  itenNota.getValorTotal(), itenNota.getQuantidade() );
     }
 }
