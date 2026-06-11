@@ -236,4 +236,11 @@ export class NotaComponent {
       event.newData.valorTotal = Number(dadosAtuais.quantidade) * produtoCompleto.valorUnitario;
     }
   }
+
+  public onRowValidating(event: any) {
+    if (this.listaDeItens.length == 0){
+      event.isValid = false;
+      event.errorText = "Adcione um item na nota"
+    }
+  }
 }
